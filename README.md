@@ -24,8 +24,12 @@ Letters can be merged into word only if their lays in a distance of one block.
 #### Example board:
 
 U D T A
-B E X N
+
+B E X N 
+
 W W B I
+
+U V M S
 
 Example word from this letters: T A X I
 

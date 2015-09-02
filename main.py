@@ -75,14 +75,12 @@ class Slowotok():
         time_text = self.d.find_element_by_id("time").text
         minutes, seconds = time_text.split(":")
         if not status_info.startswith("DO KO"):
-            print "status nie do konca"
             return False
         elif int(minutes) == 0:
             print "wait seconds", seconds
             time.sleep(int(seconds))
             return False
         else:
-            print "kosmaty"
             return True
 
     def get_game_elements(self):

@@ -1,4 +1,4 @@
-# Slowotk auto player
+# Slowotok auto player
 
 ### Application to solve game named Slowotok(slowotok.pl).
 

@@ -19,7 +19,7 @@ You pass your login and password and then app:
 Game have a board - matrix 4x4.
 Every element is a letter. 
 You have to merge letters to create polish nouns.
-Letters can be merged into word only if their lays in a distance of one block.
+Letters can be merged into word only if their lays in a distance of one block of each other.
 
 #### Example board:
 

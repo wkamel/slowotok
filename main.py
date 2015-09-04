@@ -2,7 +2,7 @@
 
 
 """
-    Slovotok solver.
+    Slowotok solver.
     Module for finding words in board of letters.
     Automatically logs in into slowotok web aplication using Selenium,
     to read letters to solve.

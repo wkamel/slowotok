@@ -1,0 +1,98 @@
+(0, 0)
+3
+(0, 1)
+5
+(0, 2)
+5
+(0, 3)
+3
+(1, 0)
+5
+(1, 1)
+8
+(1, 2)
+8
+(1, 3)
+5
+(2, 0)
+5
+(2, 1)
+8
+(2, 2)
+8
+(2, 3)
+5
+(3, 0)
+3
+(3, 1)
+5
+(3, 2)
+5
+(3, 3)
+3
+[2][2] i: 11
+[2][3] u: 12
+[3][2] h: 15
+Wrote profile results to test.py.lprof
+Timer unit: 1e-06 s
+
+Total time: 1.0793 s
+File: solver.py
+Function: add_block at line 24
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    24                                               @profile
+    25                                               def add_block(self, block, word, used_blocks):
+    26     60168       107229      1.8      9.9          used_blocks.add(block)
+    27     60168        60287      1.0      5.6          word += block.get_letter()
+    28     60168        32236      0.5      3.0          if len(word) > 2:
+    29     60074        36742      0.6      3.4              self.combinations.append(word)
+    30                                           
+    31     60168       842803     14.0     78.1          self.get_neighbours(block, word, used_blocks)
+
+Total time: 1.10344 s
+File: solver.py
+Function: get_neighbours at line 33
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    33                                               @profile  # TODO - too slow
+    34                                               def get_neighbours(self, block, word, used_blocks):
+    35                                                   """
+    36                                                   """
+    37     60168        60799      1.0      5.5          ub = set(used_blocks)
+    38     60168        27473      0.5      2.5          if word == 'obstuk':
+    39         4            2      0.5      0.0              for neighbour in block.get_neighbours():
+    40         3           21      7.0      0.0                  print neighbour
+    41                                           
+    42     60168        23685      0.4      2.1          [self.add_block(neighbour, word, ub)
+    43    321699       991456      3.1     89.9           for neighbour in block.get_neighbours() if neighbour not in used_blocks]
+
+Total time: 1.59689 s
+File: solver.py
+Function: solve at line 61
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    61                                               @profile
+    62                                               def solve(self):
+    63         1            4      4.0      0.0          LetterCombinations.board = self._board
+    64         1      1485363 1485363.0     93.0          combinations = self.create_letters_combinations()
+    65     58772        56651      1.0      3.5          for c in sorted(combinations):
+    66     58771        22353      0.4      1.4              if False and c[0] == 'o':
+    67                                                           print c
+    68                                           
+    69         1        32516  32516.0      2.0          self.find_combinations(combinations)
+
+Total time: 1.48534 s
+File: solver.py
+Function: create_letters_combinations at line 75
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    75                                               @profile
+    76                                               def create_letters_combinations(self):
+    77         1      1480452 1480452.0     99.7          map(LetterCombinations, self._board.get_blocks())
+    78         1         4891   4891.0      0.3          return set(LetterCombinations.combinations)
+

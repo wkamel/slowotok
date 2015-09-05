@@ -7,24 +7,22 @@ class Board():
     """
       Represents board - table of letters(blocks)
     """
-    _blocks = []
+    _blocks = set()
 
     def add_block(self, letter, block_id):
         block = Block(letter, block_id)
         row, col = block.get_position()
-        self._blocks.append(block)
+        self._blocks.add(block)
 
     def set_blocks_neighbours(self):
         for block in self._blocks:
-            print block.get_position()
             self.set_one_block_neighbours(block)
-            print block.get_neighbours_amount()
 
             # block.add_neighbour(block)
 
     def set_one_block_neighbours(self, block):
-        b_row = block.get_row()
-        b_col = block.get_col()
+        b_row = block.row
+        b_col = block.column
 
         for row in [-1, 0, 1]:
             sib_row = b_row + row
@@ -45,7 +43,7 @@ class Board():
 
     def get_block(self, row, col):
         for b in self._blocks:
-            if b.get_row() == row and b.get_col() == col:
+            if b.row  == row and b.column == col:
                 return b
 
     def show(self):

@@ -8,6 +8,9 @@ letters = ['ć', 'o', 'y', 's',
            'g', 'r', 'h', 'k'
            ]
 
+xletters = ['a', 'b',
+           't', 'o', ]
+
 
 board = Board()
 for no, letter in enumerate(letters):
@@ -16,7 +19,6 @@ for no, letter in enumerate(letters):
     board.add_block(letter, block_id)
 
 board.set_blocks_neighbours()
-
 
 # self.board.show()
 solver = Solver(board)
